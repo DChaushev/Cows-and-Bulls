@@ -3,13 +3,13 @@ import java.util.Random;
 
 public class CharacterGuessableItem extends GuessableItem {
 
-	private char item;
+    private char item;
     private Random rand = new Random();
 
-	@Override
-	public void generateItem() {
-		this.item = (char)(rand.nextInt(26) + 'a');
-	}
+    @Override
+    public void generateItem() {
+        this.item = (char) (rand.nextInt(26) + 'a');
+    }
 
     public char getItem() {
         return item;
@@ -34,7 +34,7 @@ public class CharacterGuessableItem extends GuessableItem {
 
     @Override
     public boolean compareTo(char c) {
-        if(this.getItem() == c)
+        if (this.getItem() == c)
             return true;
         return false;
     }

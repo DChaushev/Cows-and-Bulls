@@ -1,5 +1,5 @@
 
 public enum GuessableType {
-	INTEGER,
-	CHARACTER
+    INTEGER,
+    CHARACTER
 }
