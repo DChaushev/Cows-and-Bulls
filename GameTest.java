@@ -11,18 +11,18 @@ public class GameTest {
         Guessable g;// = myGame.generateGuessable(t);
         String s;
         Result r;
-        int option = 0;
+        String option = "0";
 
         System.out.printf("1. Play with digits\n2. Play with characters (a-z)\nChoose: ");
         try {
-            option = scan.nextInt();
+            option = scan.nextLine();
         }
         catch (java.util.NoSuchElementException e){
             System.out.println("\nGame Quit!");
         }
-        if (option == 1)
+        if (option.equals("1"))
             g = myGame.generateGuessable(GuessableType.INTEGER);
-        else if (option == 2)
+        else if (option.equals("2"))
             g = myGame.generateGuessable(GuessableType.CHARACTER);
         else {
             System.out.println("Wrong input! Default - digits");
@@ -34,6 +34,17 @@ public class GameTest {
         try {
             do {
                 s = myGame.readConsoleLine();
+                if(s.equals("q")){
+                    System.out.println("Quitting game...");
+                    System.exit(0);
+                }
+                while (s.length() < 4){
+                    System.out.println("It must be exactly 4 digits!");
+                    s = myGame.readConsoleLine();
+                }
+                if(s.length() > 4){
+                    System.out.println("It must be exactly 4 digits!\nThe other digits will be deprecated.");
+                }
                 r = g.guess(s);
                 System.out.printf("bulls: %d cows: %d\n", r.getBulls(), r.getCows());
                 finish = (r.getBulls() == 4);
